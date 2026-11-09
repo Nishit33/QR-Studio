@@ -1,7 +1,7 @@
 app_name = "qr_studio"
 app_title = "QR Studio"
 app_publisher = "Nishit Gajjar"
-app_description = "An open-source Frappe application that automatically generates QR codes for ERPNext documents and custom text, with configurable QR templates, document tracking, scanning and downloadable QR images."
+app_description = "QR Code Generation and Management for Frappe"
 app_email = "nishitgajjar800@gmail.com"
 app_license = "mit"
 
