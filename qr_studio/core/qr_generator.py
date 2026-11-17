@@ -2,7 +2,20 @@ import re
 from io import BytesIO
 
 import qrcode
-from qrcode.constants import ERROR_CORRECT_M
+from qrcode.constants import (
+    ERROR_CORRECT_L,
+    ERROR_CORRECT_M,
+    ERROR_CORRECT_Q,
+    ERROR_CORRECT_H,
+)
+
+
+ERROR_CORRECTION_LEVELS = {
+    "L": ERROR_CORRECT_L,
+    "M": ERROR_CORRECT_M,
+    "Q": ERROR_CORRECT_Q,
+    "H": ERROR_CORRECT_H,
+}
 
 
 def generate_qr_png(
@@ -11,8 +24,8 @@ def generate_qr_png(
     back_color: str = "#FFFFFF",
     box_size: int = 10,
     border: int = 4,
+    error_correction: str = "M",
 ) -> bytes:
-    """Generate a QR code and return its PNG image as bytes."""
 
     if content is None or not str(content).strip():
         raise ValueError("QR content cannot be empty.")
@@ -29,9 +42,14 @@ def generate_qr_png(
     if not isinstance(border, int) or not 0 <= border <= 20:
         raise ValueError("Border must be between 0 and 20.")
 
+    error_correction = str(error_correction).upper()
+
+    if error_correction not in ERROR_CORRECTION_LEVELS:
+        raise ValueError("Invalid error correction level.")
+
     qr = qrcode.QRCode(
         version=None,
-        error_correction=ERROR_CORRECT_M,
+        error_correction=ERROR_CORRECTION_LEVELS[error_correction],
         box_size=box_size,
         border=border,
     )

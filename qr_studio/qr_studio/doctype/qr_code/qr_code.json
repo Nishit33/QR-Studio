@@ -12,6 +12,12 @@
   "title",
   "qr_type",
   "qr_content",
+  "box_size",
+  "border",
+  "logo",
+  "foreground_color",
+  "background_color",
+  "error_correction",
   "generated_qr",
   "qr_image",
   "generated_on",
@@ -31,16 +37,20 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title"
   },
   {
    "fieldname": "qr_content",
    "fieldtype": "Small Text",
-   "label": "QR Content"
+   "in_list_view": 1,
+   "label": "QR Content",
+   "reqd": 1
   },
   {
    "fieldname": "qr_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "QR Type",
    "options": "Text\nNumber\nURL\nDocument\nCustom"
   },
@@ -52,12 +62,14 @@
   {
    "fieldname": "generated_on",
    "fieldtype": "Datetime",
+   "in_list_view": 1,
    "label": "Generated On"
   },
   {
    "default": "1",
    "fieldname": "is_active",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is Active"
   },
   {
@@ -86,12 +98,46 @@
    "fieldname": "document_reference",
    "fieldtype": "Section Break",
    "label": "DOCUMENT REFERENCE"
+  },
+  {
+   "fieldname": "foreground_color",
+   "fieldtype": "Color",
+   "label": "Foreground Color"
+  },
+  {
+   "fieldname": "background_color",
+   "fieldtype": "Color",
+   "label": "Background Color"
+  },
+  {
+   "fieldname": "error_correction",
+   "fieldtype": "Select",
+   "label": "Error Correction",
+   "options": "L\nM\nQ\nH"
+  },
+  {
+   "default": "10",
+   "description": "Controls the size of each QR code box. Allowed range: 1\u201340.",
+   "fieldname": "box_size",
+   "fieldtype": "Int",
+   "label": "Box Size"
+  },
+  {
+   "default": "4",
+   "fieldname": "border",
+   "fieldtype": "Int",
+   "label": "Border"
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-11-09 19:29:45.128761",
+ "modified": "2026-11-09 23:05:57.652249",
  "modified_by": "Administrator",
  "module": "QR Studio",
  "name": "QR Code",
